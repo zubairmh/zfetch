@@ -36,7 +36,7 @@ If you'd like to contribute support for additional operating systems or improve 
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://github.com/zubairmh/zfetch/blob/main/LICENSE).
 
 ## Acknowledgements
 
