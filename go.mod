@@ -3,13 +3,13 @@ module github.com/zubairmh/zfetch
 go 1.20
 
 require (
+	github.com/fatih/color v1.15.0
 	github.com/shirou/gopsutil/v3 v3.23.5
 	github.com/urfave/cli/v2 v2.25.6
 )
 
 require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
-	github.com/fatih/color v1.15.0 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
