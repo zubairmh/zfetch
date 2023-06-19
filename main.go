@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/user"
 
+	"github.com/fatih/color"
 	"github.com/shirou/gopsutil/v3/disk"
 	"github.com/shirou/gopsutil/v3/mem"
 	"github.com/urfave/cli/v2"
@@ -17,8 +18,9 @@ func check(e error) {
 		panic(e)
 	}
 }
-func n(size uint64) float64 {
-	return roundFloat(float64(size)*math.Pow(1024, -3), 2)
+func n(size uint64) string {
+	v := roundFloat(float64(size)*math.Pow(1024, -3), 2)
+	return fmt.Sprintf("%vGB", v)
 }
 
 func roundFloat(val float64, precision uint) float64 {
@@ -32,7 +34,9 @@ func main() {
 		Usage: "Display current system stats",
 		Action: func(*cli.Context) error {
 			u, _ := user.Current()
-			fmt.Println(u.Username)
+			green := color.New(color.BgGreen).SprintFunc()
+			fmt.Println(green(u.Username))
+			fmt.Println()
 			v, _ := mem.VirtualMemory()
 			parts, _ := disk.Partitions(true)
 			var free, total uint64
@@ -44,9 +48,12 @@ func main() {
 
 			}
 
-			// almost every return value is a struct
-			fmt.Printf("Memory Total: %vGB, Free:%vGB, UsedPercent:%d%%\n", n(v.Total), n(v.Free), int(v.UsedPercent))
-			fmt.Printf("Disk Total: %vGB, Free:%vGB", n(total), n(free))
+			green_fg := color.New(color.FgHiGreen).SprintFunc()
+			blue := color.New(color.BgHiBlue).SprintFunc()
+			fmt.Println(blue("Memory"))
+			fmt.Printf("Total: %s, Free: %s, Usage: %s\n\n", green_fg(n(v.Total)), green_fg(n(v.Free)), green_fg(fmt.Sprintf("%v%%", v.UsedPercent)))
+			fmt.Println(blue("Disk"))
+			fmt.Printf("Total: %s, Free: %s", green_fg(n(total)), green_fg(n(free)))
 			return nil
 		},
 	}

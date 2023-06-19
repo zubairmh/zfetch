@@ -9,8 +9,11 @@ require (
 
 require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
+	github.com/fatih/color v1.15.0 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.17 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/tklauser/go-sysconf v0.3.11 // indirect
